@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { CssBaseline, Container, Typography } from "@mui/material";
+import ClaimForm from "./components/ClaimForm";
+import { Claim } from "./types/claim";
 
-function App() {
+const App: React.FC = () => {
+  const [claims, setClaims] = useState<Claim[]>([]);
+
+  const handleNewClaim = (newClaim: Claim) => {
+    setClaims((prevClaims) => [...prevClaims, newClaim]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline />
+      <Container maxWidth="md">
+        <Typography variant="h4" component="h1" gutterBottom>
+          Claim Submission System
+        </Typography>
+        <ClaimForm onNewClaim={handleNewClaim} />
+      </Container>
+    </>
   );
-}
+};
 
 export default App;
