@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CssBaseline, Container, Typography } from "@mui/material";
 import ClaimForm from "./components/ClaimForm";
+import ClaimList from "./components/ClaimList";
 import { Claim } from "./types/claim";
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
           Claim Submission System
         </Typography>
         <ClaimForm onNewClaim={handleNewClaim} />
+        <ClaimList claims={claims} />
       </Container>
     </>
   );
